@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>landing page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- google icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #F4F9FC;
+      font-family: 'Plus Jakarta Sans';
+    }
+
+    .navbar-brand img {
+      height: 30px;
+    }
+
+    .nav-link {
+      color: #000;
+      font-weight: 500;
+    }
+
+    .nav-link.add-employee::before {
+      content: '+ ';
+      color: #0067B8;
+      font-weight: bold;
+    }
+
+    .notification-icon {
+      position: relative;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .notification-icon .dropdown-menu {
+      position: absolute !important;
+      top: calc(100% + 10px) !important;
+      right: 0 !important;
+      z-index: 1060 !important;
+      width: 350px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    @media (max-width: 576px) {
+      .notification-icon .dropdown-menu {
+        /* right: -30px;  */
+        width: 70vw;
+      }
+    }
+
+    .notification-icon.show .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-toggle-no-caret::after {
+      display: none;
+    }
+
+    .notification-item {
+      background-color: #f1f7ff;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .notification-time {
+      font-size: 0.8rem;
+      color: gray;
+    }
+
+    .search-box-text {
+      font-family: 'Lexend', sans-serif;
+      color: #1C170D;
+      font-size: 16px;
+
+      line-height: 24px;
+      font-weight: 400;
+    }
+
+    .search-container {
+      position: relative;
+
+    }
+    .search-input {
+      height: 50px;
+      border-radius: 30px;
+      padding-left: 35px;
+      border: none;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      /* width: 100vh; */
+    }
+
+    @media (max-width: 768px) {
+      .search-input {
+        height: 35px;
+        /* width: 50%; */
+      }
+    }
+
+    .search-icon {
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      transform: translateY(-50%);
+      color: #888;
+    }
+
+    .emp-img {
+      border-radius: 50%;
+      width: 86px;
+      margin-right: 8px;
+    }
+    .concern-btn{
+        position: absolute; 
+        bottom: 12px; 
+        right: 60px;
+        background-color: #0067B8;
+    }
+    .concern-btn:hover,
+    .concern-btn:focus,
+    .concern-btn:active {
+      background-color: #0067B8;
+      color: white;
+    }
+  </style>
+</head>
+
+<body class="body">
+
+   <nav class="navbar bg-white shadow-sm px-3 py-2" style="justify-content: space-evenly;">
+  <div class="container-fluid d-flex" >
+
+    <!-- Logo -->
+    <a class="navbar-brand" href="index.html">
+      <img src="/public/images/logo.svg" alt="Logo" />
+    </a>
+
+    <!-- Notification Bell (small screen) -->
+    <div class="d-lg-none d-flex align-items-center">
+      <!-- Toggle Button -->
+      <button class="btn btn-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="nav-item dropdown notification-icon me-2 position-relative">
+        <button class="btn dropdown-toggle border-0 bg-transparent p-0 dropdown-toggle-no-caret" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="/public/images/notification.png" alt="Bell" width="25px" />
+        </button>
+        <div class="dropdown-menu dropdown-menu-end p-3">
+          <h6 class="fw-bold mb-2">Notifications</h6>
+          <div class="notification-item">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="fw-bold">TCS</div>
+              <div class="text-end"><small class="text-muted">2 min ago</small> <span class="new-dot"></span></div>
+            </div>
+            <div class="notification-time">Friday, 3:12 PM</div>
+            <p class="mb-0 mt-1 small">Lorem Ipsum is simply dummy text...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Dropdown -->
+        <div class="nav-item dropdown position-relative">
+          <a class="nav-link dropdown-toggle d-flex align-items-center p-1 rounded-pill border border-primary"
+            href="#"
+            id="mobileProfileDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <img src="https://i.pravatar.cc/32?img=2" alt="Profile" class="rounded-circle me-1" width="30" height="30">
+            <span class="fw-semibold text-primary d-none d-sm-inline">FB Pvt.</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end mt-2 shadow"
+              aria-labelledby="mobileProfileDropdown"
+              style="position: absolute; top: 120%; right: 0; z-index: 1050;">
+            <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <!-- <li><hr class="dropdown-divider"></li> -->
+            <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+          </ul>
+        </div>
+      
+    </div>
+
+    <!-- Desktop Nav Items -->
+     <div  class="d-none d-lg-flex">
+      <ul class="navbar-nav flex-row d-flex align-items-center justify-content-center">
+      
+        <li class="nav-item me-4 ">
+          <a class="nav-link" href="search.html">Find Employee</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link add-employee" href="AddEmployee.html">Add Employee</a>
+        </li>
+        </ul>
+     </div>
+
+    <div class="d-none d-lg-flex"> 
+        <ul class="navbar-nav flex-row align-items-center">
+        <!-- Notification -->
+        <li class="nav-item ms-4 me-3 dropdown notification-icon position-relative">
+          <button class="btn dropdown-toggle border-0 bg-transparent p-0 dropdown-toggle-no-caret" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="/public/images/notification.png" alt="Bell" width="25" />
+          </button>
+          <div class="dropdown-menu dropdown-menu-end p-3">
+            <h6 class="fw-bold mb-2">Notifications</h6>
+            <div class="notification-item">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="fw-bold">TCS</div>
+                <div class="text-end"><small class="text-muted">2 min ago</small> <span class="new-dot"></span></div>
+              </div>
+              <div class="notification-time">Friday, 3:12 PM</div>
+              <p class="mb-0 mt-1 small">Lorem Ipsum is simply dummy text...</p>
+            </div>
+          </div>
+        </li>
+      
+        <!-- Profile Dropdown -->
+        <li class="nav-item dropdown ms-2 position-relative">
+          <a class="nav-link dropdown-toggle d-flex align-items-center p-2 rounded-pill"
+            href="#"
+            id="profileDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false" style="border:1px solid #0067B8;">
+            <img src="https://i.pravatar.cc/32?img=1" alt="Profile" class="rounded-circle me-2" width="32" height="32">
+            <span class="fw-semibold" style="color: #0067B8;">FB Pvt.</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end mt-2 shadow" aria-labelledby="profileDropdown"  style="position: absolute; top: 120%; right: 0; z-index: 1050;">
+            <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <!-- <li><hr class="dropdown-divider"></li> -->
+            <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+          </ul>
+        </li>
+
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <!-- Offcanvas (Mobile Nav) -->
+  <div class="offcanvas offcanvas-end w-75" tabindex="-1" id="offcanvasNav">
+    <div class="offcanvas-header bg-light">
+      <h5 class="offcanvas-title">Menu</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Find Employee</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link add-employee" href="#">Add Employee</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  
+  <!-- searchbar -->
+  <div class="container mt-4" style="max-width: 950px;">
+    <div class="row d-md-flex justify-content-between align-items-center  g-4">
+      <div class="col col-md-8">
+        <div class="search-container">
+          <input type="text" class="form-control search-input search-box-text " placeholder="Search Here....">
+          <i class="fas fa-search search-icon"></i>
+        </div>
+      </div>
+      <!-- search by filters -->
+      <div class="col-auto">
+        <input type="radio" id="by-company">
+        <label for="by-company">By Company</label>
+        <input type="radio" id="by-company">
+        <label for="by-employee">By Employee</label>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- accordians  -->
+  <div class="container mt-4" style="max-width: 950px;">
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <!-- Emone -->
+      <div class="accordion-item rounded-3">
+        <h2 class="accordion-header" id="flush-headingOne">
+          <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"
+           >
+            <!-- employee one  -->
+            <div class="d-flex align-items-center gap-2">
+              <div><img src="/public/images/employeeone.jpg" alt="woman" class="emp-img"></div>
+              <div>
+                <h4 class="m-0 text-small">Ashika Gupta</h4>
+                <p class="m-0 text-small">Tata Consultancy Services</p>
+                <p class="text-muted mt-2">Mern Stack Developer</p>
+              </div>
+            </div>
+          </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+          data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body position-relative m-3">
+            <div class="row">
+              <div class="col col-8">
+                <p class="m-0"><strong>Phone no.</strong> - +9123456789</p>
+                <p class="m-0"><strong>Address</strong> - John Doe, 123 Main St, Anytown, CA 91234</p>
+                <p class="m-0"><strong>City</strong> - Jaipur</p>
+                <p class="m-0"><strong>Joining Date</strong> <input type="date" class="date"></p>
+                <p class="m-0"><strong>Rating</strong> - 4.5</p>
+                <p class="m-0"><strong>Review (Description) </strong></p>
+                <p class="m-0 text-small text-muted">Aashika Gupta has demonstrated a consistent level of
+                  professionalism,
+                  dedication, and quality work throughout the review period. They have fulfilled their role effectively,
+                  contributing positively to team dynamics and departmental goals. Their ability to take initiative and
+                  manage tasks independently has been especially valuable.</p>
+              </div>
+              <div class="col col-4">
+                <p class="m-0"><strong>Email</strong> - example@gmail.com</p>
+                <p class="m-0"><strong> Department</strong> - I.T.</p>
+                <p class="m-0"><strong>State</strong> - Rajasthan</p>
+                <p class="m-0"><strong>Exit Date</strong> <input type="date"> </p>
+              </div>
+            </div>
+            <button type="button" class=" btn concern-btn text-light" data-bs-toggle="modal" data-bs-target="#modalOne">Raise Concern</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- EmTwo -->
+      <div class="accordion-item rounded-3"
+        <h2 class="accordion-header" id="flush-headingTwo">
+          <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo"
+            >
+
+            <div class="d-flex align-items-center gap-2">
+              <div><img src="../public/images/employeeone.jpg" alt="woman" class="emp-img"></div>
+              <div>
+                <h4 class="m-0 text-small">Ashika Gupta</h4>
+                <p class="m-0 text-small">Tata Consultancy Services</p>
+                <p class="text-muted mt-2">Mern Stack Developer</p>
+              </div>
+            </div>
+          </button>
+        </h2>
+        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+          data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body position-relative m-3">
+            <div class="row">
+              <div class="col col-8">
+                <p class="m-0"><strong>Phone no.</strong> - +9123456789</p>
+                <p class="m-0"><strong>Address</strong> - John Doe, 123 Main St, Anytown, CA 91234</p>
+                <p class="m-0"><strong>City</strong> - Jaipur</p>
+                <p class="m-0"><strong>Joining Date</strong> <input type="date" class="date"></p>
+                <p class="m-0"><strong>Rating</strong> - 4.5</p>
+                <p class="m-0"><strong>Review (Description) </strong></p>
+                <p class="m-0 text-small text-muted">Aashika Gupta has demonstrated a consistent level of
+                  professionalism,
+                  dedication, and quality work throughout the review period. They have fulfilled their role effectively,
+                  contributing positively to team dynamics and departmental goals. Their ability to take initiative and
+                  manage tasks independently has been especially valuable.</p>
+              </div>
+              <div class="col col-4">
+                <p class="m-0"><strong>Email</strong> - example@gmail.com</p>
+                <p class="m-0"><strong> Department</strong> - I.T.</p>
+                <p class="m-0"><strong>State</strong> - Rajasthan</p>
+                <p class="m-0"><strong>Exit Date</strong> <input type="date"> </p>
+              </div>
+            </div>
+            <button type="button" class=" btn concern-btn text-light">Raise Concern</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- EmThree -->
+      <div class="accordion-item rounded-3">
+        <h2 class="accordion-header" id="flush-headingThree">
+          <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+
+            <div class="d-flex align-items-center gap-2">
+              <div><img src="../public/images/employeeone.jpg" alt="woman" class="emp-img"></div>
+              <div>
+                <h4 class="m-0 text-small">Ashika Gupta</h4>
+                <p class="m-0 text-small">Tata Consultancy Services</p>
+                <p class="text-muted mt-2">Mern Stack Developer</p>
+              </div>
+            </div>
+          </button>
+        </h2>
+        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+          data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body position-relative m-3">
+            <div class="row">
+              <div class="col col-8">
+                <p class="m-0"><strong>Phone no.</strong> - +9123456789</p>
+                <p class="m-0"><strong>Address</strong> - John Doe, 123 Main St, Anytown, CA 91234</p>
+                <p class="m-0"><strong>City</strong> - Jaipur</p>
+                <p class="m-0"><strong>Joining Date</strong> <input type="date" class="date"></p>
+                <p class="m-0"><strong>Rating</strong> - 4.5</p>
+                <p class="m-0"><strong>Review (Description) </strong></p>
+                <p class="m-0 text-small text-muted">Aashika Gupta has demonstrated a consistent level of
+                  professionalism,
+                  dedication, and quality work throughout the review period. They have fulfilled their role effectively,
+                  contributing positively to team dynamics and departmental goals. Their ability to take initiative and
+                  manage tasks independently has been especially valuable.</p>
+              </div>
+              <div class="col col-4">
+                <p class="m-0"><strong>Email</strong> - example@gmail.com</p>
+                <p class="m-0"><strong> Department</strong> - I.T.</p>
+                <p class="m-0"><strong>State</strong> - Rajasthan</p>
+                <p class="m-0"><strong>Exit Date</strong> <input type="date"> </p>
+              </div>
+            </div>
+            <button type="button" class=" btn concern-btn text-light">Raise Concern</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- modals -->
+  <!-- ModalOne -->
+  <div class="modal fade" id="modalOne" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalOneTitle">Write a Concern here.</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Message:</label>
+              <textarea class="form-control" id="message-text"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
